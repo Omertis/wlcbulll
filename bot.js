@@ -18,7 +18,7 @@ client.on("ready", () => {
     })
 })
 client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.find('name', 'chat');
+    let channel = member.guild.channels.find('name', 'bull-chat');
     if (!channel) {
         console.log("!channel fails");
         return;
@@ -47,7 +47,7 @@ client.on("guildMemberAdd", (member) => {
 
 client.on('guildMemberAdd', member => {
 
-     if (member.guild.id === "419854921895247893") {
+     if (member.guild.id === "438937491592970244") {
     
 if (member.user.bot) return;
 var Canvas = require('canvas')
@@ -108,7 +108,7 @@ const w = ['./img/qqqq.jpg'];
                                  ctx.closePath();
                                  ctx.clip();
                                  ctx.drawImage(ava, 10, 38, 128, 126);     
-client.channels.get("425716225663041537").sendFile(canvas.toBuffer())
+client.channels.get("439007334279151617").sendFile(canvas.toBuffer())
 
 
 
