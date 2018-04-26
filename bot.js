@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ fetchAllMembers: true });
-
+const fs = require('fs');
 
 var dat = JSON.parse("{}");
 function forEachObject(obj, func) {
@@ -45,14 +45,14 @@ client.on("guildMemberAdd", (member) => {
 });
 
 
-client.on('guildMemberAdd', member => {
+ client.on('guildMemberAdd', member => {
 
      if (member.guild.id === "438937491592970244") {
     
 if (member.user.bot) return;
 var Canvas = require('canvas')
 var jimp = require('jimp')
-const w = ['./img/qqqq.jpg'];
+const w = ['./img/bull1.png'];
         let Image = Canvas.Image,
             canvas = new Canvas(749, 198),
             ctx = canvas.getContext('2d');
@@ -250,9 +250,11 @@ client.on('message', message => {
         if (!message.member.hasPermissions('ADMINISTRATOR')){
         message.delete()
     return message.reply(`** Not allowed to advertising Here :angry: ! **`)
-    }
+        }
 }
 });
+ client.login('NDM4OTU2Mzc3MTcyNDc1OTA1.DcM09A.2PGnMbXT2mc9LcBSvyluuCm-Ymo');
+
 
 client.login(process.env.BOT_TOKEN);
 
