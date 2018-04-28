@@ -9,7 +9,7 @@ function forEachObject(obj, func) {
 client.on("ready", () => {
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "Bull")
+        guild = client.guilds.find("name", "TB")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -18,7 +18,7 @@ client.on("ready", () => {
     })
 })
 client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.find('name', 'bull-chat');
+    let channel = member.guild.channels.find('name', 'welcome');
     if (!channel) {
         console.log("!channel fails");
         return;
@@ -29,7 +29,7 @@ client.on("guildMemberAdd", (member) => {
     console.log('made it till here!');
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "Bull")
+        guild = client.guilds.find("name", "TB")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -47,7 +47,7 @@ client.on("guildMemberAdd", (member) => {
 
  client.on('guildMemberAdd', member => {
 
-     if (member.guild.id === "438937491592970244") {
+     if (member.guild.id === "438748386112307221") {
     
 if (member.user.bot) return;
 var Canvas = require('canvas')
@@ -83,7 +83,7 @@ const w = ['./img/bull1.png'];
                         ctx.fontSize = '40px';
                         ctx.fillStyle = "#34495E";
                         ctx.textAlign = "center";
-                        ctx.fillText(" Welcome to " + member.guild.name , 300, 55);
+                        ctx.fillText(" Welcome to " + member.guild.name , 300, 60);
 
                         //ur name
                         ctx.font = '40px Impact';
@@ -108,7 +108,7 @@ const w = ['./img/bull1.png'];
                                  ctx.closePath();
                                  ctx.clip();
                                  ctx.drawImage(ava, 10, 38, 128, 126);     
-client.channels.get("439007334279151617").sendFile(canvas.toBuffer())
+client.channels.get("438768174796898305").sendFile(canvas.toBuffer())
 
 
 
