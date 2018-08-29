@@ -1,4 +1,11 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
 client.on('guildMemberAdd',async member => {
+   const fs = require('fs');
   const Canvas = require('canvas');
   const jimp = require('jimp');
   const w = ['./welcome_4.png'];
@@ -50,7 +57,7 @@ client.on('guildMemberAdd',async member => {
           ctx.clip();
           ctx.drawImage(ava, 36, 21, 260, 260);
  			
-		  const c = hero.channels.get(" اي دي الروم ");
+		  const c = client.channels.get(" اي دي الروم ");
           c.sendFile(canvas.toBuffer());
  
 });
