@@ -8,7 +8,7 @@ client.on('guildMemberAdd',async member => {
    const fs = require('fs');
   const Canvas = require('canvas');
   const jimp = require('jimp');
-  const w = ['./welcome_4.png'];
+  const w = ['img/welcome_4.png'];
         let Image = Canvas.Image,
             canvas = new Canvas(800, 300),
             ctx = canvas.getContext('2d');
@@ -72,7 +72,7 @@ function forEachObject(obj, func) {
 client.on("ready", () => {
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "..")
+        guild = client.guilds.find("name", "vd")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -81,7 +81,7 @@ client.on("ready", () => {
     })
 })
 client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.find('name', 'general');
+    let channel = member.guild.channels.find('name', 'vv');
     if (!channel) {
         console.log("!channel fails");
         return;
@@ -92,7 +92,7 @@ client.on("guildMemberAdd", (member) => {
     console.log('made it till here!');
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "..")
+        guild = client.guilds.find("name", "vd")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
