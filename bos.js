@@ -6,9 +6,8 @@ client.on('ready', () => {
 });
 
 client.on('ready', () => { //playing
-    client.user.setStatus('dnd');
-})
-
+    client.user.setStatus('idle');
+});
 
 client.on('voiceStateUpdate', (u, member) => {
   var parent = '487902728497135638';
