@@ -108,5 +108,29 @@ client.on("guildMemberAdd", (member) => {
         })
     })
 });
+client.on('voiceStateUpdate', (codes, ReBeL) => {
+if(ReBeL.voiceChannelID !== "487902833740349450") return console.log("أيرور . ");
+ReBeL.guild.createChannel(ReBeL.user.username , 'voice').then((rebeeel) =>{
+    rebeeel.setParent("487902728497135638");
+ReBeL.guild.members.get(ReBeL.id).setVoiceChannel(rebeeel.id).then((codess) =>{
+  console.log("تــــــم .");
+  let scan = setInterval(()=>{
+if(!ReBeL.voiceChannel) {
+  rebeeel.delete();
+}
+  }, 1700);
+});
+});
+});
+
+
+client.on('voiceStateUpdate', (old, now) => {
+  const channel = client.channels.get('487903515667202060');
+  const currentSize = channel.guild.members.filter(m => m.voiceChannel).size;
+  const size = channel.name.match(/\[\s(\d+)\s\]/);
+  if (!size) return channel.setName(`Voice Online: ${currentSize}`);
+  if (currentSize !== size) channel.setName(`Just Online: ${currentSize}`);
+});
+
 
 client.login(process.env.BOT_TOKEN);
