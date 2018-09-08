@@ -131,7 +131,7 @@ client.on('voiceStateUpdate', (u, member) => {
         })
 
       }
-    }, 30000);
+    }, 1700);
   });
 });
 
