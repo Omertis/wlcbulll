@@ -5,9 +5,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('ready', () => { //playing
-    client.user.setStatus('idle');
-});
+
 
 client.on('voiceStateUpdate', (u, member) => {
   var parent = '487902728497135638';
@@ -1269,5 +1267,17 @@ setInterval(function(){})
       
 }
 });
+
+
+
+
+
+
+
+client.on('ready', () => { //playing
+    client.user.setStatus('idle');
+});
+
+
 
 client.login(process.env.BOT_TOKEN);
