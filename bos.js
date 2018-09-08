@@ -5,6 +5,11 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+client.on('ready', () => { //playing
+    client.user.setStatus('dnd');
+})
+
+
 client.on('voiceStateUpdate', (u, member) => {
   var parent = '487902728497135638';
   var channel = '487902833740349450';
