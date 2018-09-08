@@ -108,19 +108,31 @@ client.on("guildMemberAdd", (member) => {
         })
     })
 });
-client.on('voiceStateUpdate', (codes, ReBeL) => {
-if(ReBeL.voiceChannelID !== "487902833740349450") return console.log("أيرور . ");
-ReBeL.guild.createChannel(ReBeL.user.username , 'voice').then((rebeeel) =>{
-    rebeeel.setParent("487902728497135638");
-ReBeL.guild.members.get(ReBeL.id).setVoiceChannel(rebeeel.id).then((codess) =>{
-  console.log("تــــــم .");
-  let scan = setInterval(()=>{
-if(!ReBeL.voiceChannel) {
-  rebeeel.delete();
-}
-  }, 1700);
-});
-});
+client.on('voiceStateUpdate', (u, member) => {
+  var parent = '487902728497135638';
+  var channel = '487902833740349450';
+  if(member.voiceChannel === null || member.voiceChannel !== member.guild.channels.get(channel)) return console.log(`${member.user.username}'s channel isnt the needed one.`);
+  member.guild.createChannel(`${member.user.username}`, 'voice').then(c => {
+  client.channels.get(parent).overwritePermissions(member, {
+                                CONNECT:false,
+                                         SPEAK:false
+})
+
+    if(!c) return;
+    c.setParent(parent);
+    member.setVoiceChannel(c);
+    setInterval(() => {
+      if(!c) return;
+      if(c.members.size === 0) {
+        c.delete();
+  client.channels.get(parent).overwritePermissions(member, {
+                                CONNECT:true,
+                                         SPEAK:true
+        })
+
+      }
+    }, 30000);
+  });
 });
 
 
