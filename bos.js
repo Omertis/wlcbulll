@@ -5,14 +5,17 @@ const request = require('request');
 const fs = require('fs');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
- 
+
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
 const prefix = '.';
 client.on('ready', function() {
     console.log(`i am ready ${client.user.username}`);
 });
- 
+
+      client.on('ready', () => {
+              client.user.setActivity("1play | .Fun", {type: 'LISTENING'});
       
+      });
 /*
 ////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\
 ////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -40,16 +43,16 @@ var download = function(uri, filename, callback) {
     request.head(uri, function(err, res, body) {
         console.log('content-type:', res.headers['content-type']);
         console.log('content-length:', res.headers['content-length']);
- 
+
         request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
     });
 };
- 
+
 client.on('message', function(message) {
     const member = message.member;
     const mess = message.content.toLowerCase();
     const args = message.content.split(' ').slice(1).join(' ');
- 
+
     if (mess.startsWith(prefix + 'play')) {
         if (!message.member.voiceChannel) return message.channel.send('You must be in my audio room :microphone2:');
         // if user is not insert the URL or song title
@@ -65,12 +68,12 @@ message.channel.send('Add a song name or song link :drum: ')
 message.channel.send(`aded : **( ${videoInfo.title} )** on the list :musical_note:`)
                     queueNames.push(videoInfo.title);
                     now_playing.push(videoInfo.title);
- 
+
                 });
             });
         }
         else {
- 
+
             isPlaying = true;
             getID(args, function(id) {
                 queue.push('placeholder');
@@ -127,23 +130,23 @@ message.channel.send(`Now playing : **( ${videoInfo.title} )** :musical_note: `)
 message.channel.send('Now playing : ${videoInfo.title} :musical_note:')
     }
 });
- 
+
 function skip_song(message) {
     if (!message.member.voiceChannel) return message.channel.send('You must be in my audio room :microphone2:');
     dispatcher.end();
 }
- 
+
 function playMusic(id, message) {
     voiceChannel = message.member.voiceChannel;
- 
- 
+
+
     voiceChannel.join().then(function(connectoin) {
         let stream = ytdl('https://www.youtube.com/watch?v=' + id, {
             filter: 'audioonly'
         });
         skipReq = 0;
         skippers = [];
- 
+
         dispatcher = connectoin.playStream(stream);
         dispatcher.on('end', function() {
             skipReq = 0;
@@ -163,7 +166,7 @@ function playMusic(id, message) {
         });
     });
 }
- 
+
 function getID(str, cb) {
     if (isYoutube(str)) {
         cb(getYoutubeID(str));
@@ -174,7 +177,7 @@ function getID(str, cb) {
         });
     }
 }
- 
+
 function add_to_queue(strID) {
     if (isYoutube(strID)) {
         queue.push(getYoutubeID(strID));
@@ -183,26 +186,19 @@ function add_to_queue(strID) {
         queue.push(strID);
     }
 }
- 
+
 function search_video(query, cb) {
     request("https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=" + encodeURIComponent(query) + "&key=" + yt_api_key, function(error, response, body) {
         var json = JSON.parse(body);
         cb(json.items[0].id.videoId);
     });
 }
- 
- 
+
+
 function isYoutube(str) {
     return str.toLowerCase().indexOf('youtube.com') > -1;
 }
- client.on('message', message => {
-  if (message.content === `sadasdwdwa`) {
-    const embed = new Discord.RichEmbed()
-     .setColor("RANDOM")
-.setFooter('Thank You For use this bot ! .')
-      message.channel.send({embed});
-     }
-    });
+ 
  
 
 
