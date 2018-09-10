@@ -1,12 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = "."
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
-
-
-
 const ytdl = require('ytdl-core');
 const request = require('request');
 const fs = require('fs');
@@ -14,6 +7,7 @@ const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
  
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
+const prefix = '.';
 client.on('ready', function() {
     console.log(`i am ready ${client.user.username}`);
 });
@@ -201,9 +195,15 @@ function search_video(query, cb) {
 function isYoutube(str) {
     return str.toLowerCase().indexOf('youtube.com') > -1;
 }
-
-
-
+ client.on('message', message => {
+  if (message.content === `sadasdwdwa`) {
+    const embed = new Discord.RichEmbed()
+     .setColor("RANDOM")
+.setFooter('Thank You For use this bot ! .')
+      message.channel.send({embed});
+     }
+    });
+ 
 
 
 
