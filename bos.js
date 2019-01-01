@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({ fetchAllMembers: true });
 const ytdl = require('ytdl-core');
 const request = require('request');
 const fs = require('fs');
@@ -1433,6 +1433,284 @@ setInterval(function(){})
 client.on('ready', () => { //playing
     client.user.setStatus('idle');
 });
+
+
+
+
+
+
+client.on('guildMemberAdd', member => {
+
+     if (member.guild.id === "528660435151618049") {
+    
+if (member.user.bot) return;
+var Canvas = require('canvas')
+var jimp = require('jimp')
+const w = ['./img/image0 (5).png'];
+        let Image = Canvas.Image,
+            canvas = new Canvas(749, 198),
+            ctx = canvas.getContext('2d');
+        ctx.patternQuality = 'bilinear';
+        ctx.filter = 'bilinear';
+        ctx.antialias = 'subpixel';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+        ctx.shadowOffsetY = 2;
+        ctx.shadowBlur = 2;
+        ctx.stroke();
+        ctx.beginPath();
+
+        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+            if (err) return console.log(err);
+            let BG = Canvas.Image;
+            let ground = new Image;
+            ground.src = Background;
+            ctx.drawImage(ground, 0, 0, 749, 198);
+
+})
+
+                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
+                jimp.read(url, (err, ava) => {
+                    if (err) return console.log(err);
+                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                        if (err) return console.log(err);
+                        ctx.font = '20px agent_orange';
+                        ctx.fontSize = '20px';
+                        ctx.fillStyle = "#34495E";
+                        ctx.textAlign = "center";
+                        ctx.fillText(" Welcome to " + member.guild.name , 270, 75);
+
+                        //ur name
+                        ctx.font = '35px A GOOGLE';
+                        ctx.fontSize = '35px';
+                        ctx.fillStyle = "#566573";
+                        ctx.textAlign = "center";
+                        ctx.fillText(member.user.username, 300, 110);
+
+                         ctx.font = '21px Impact';
+                        ctx.fontSize = '21px';
+                        ctx.fillStyle = "#2C3E50";
+                        ctx.textAlign = "center";
+                        ctx.fillText("Number" + member.guild.memberCount, 220, 133);
+
+
+                        //Avatar
+                    let Avatar = Canvas.Image;
+                              let ava = new Avatar;
+                              ava.src = buf;
+                              ctx.beginPath();
+                              ctx.arc(95, 101, 60, 0,  Math.PI*2);
+                                 ctx.closePath();
+                                 ctx.clip();
+                                 ctx.drawImage(ava, 35.3, 40, 120, 120);     
+client.channels.get("528660437298839562").sendFile(canvas.toBuffer())
+
+
+
+})
+})
+
+}
+});
+
+
+
+var dat = JSON.parse("{}");
+function forEachObject(obj, func) {
+    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
+}
+client.on("ready", () => {
+    var guild;
+    while (!guild)
+        guild = client.guilds.find("name", "Looks.,")
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            dat[Inv] = Invite.uses;
+        })
+    })
+})
+client.on("guildMemberAdd", (member) => {
+    let channel = member.guild.channels.find('name', 'bbbbbbooooootttttt');
+    if (!channel) {
+        console.log("!channel fails");
+        return;
+    }
+    if (member.id == client.user.id) {
+        return;
+    }
+    console.log('made it till here!');
+    var guild;
+    while (!guild)
+        guild = client.guilds.find("name", "Looks.,")
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            if (dat[Inv])
+                if (dat[Inv] < Invite.uses) {
+                    console.log(3);
+                    console.log(`${member} joined over ${Invite.inviter}'s invite ${Invite.code}`)
+ channel.send(` **Invited by**  ${Invite.inviter} `)            
+ }
+            dat[Inv] = Invite.uses;
+        })
+    })
+});
+
+
+ 
+
+client.on('message', message => {
+    if (message.content.startsWith("invites")) {
+    message.guild.fetchInvites()
+    .then(invites => message.channel.send(`You Have Been invited  **${invites.find(invite => invite.inviter.id === message.author.id).uses} Members** To This Server `))
+     
+    }
+});
+
+
+client.on('message',function(message) {
+                  if(!message.channel.guild) return;
+
+  const prefix = "";
+                    if (message.content === prefix + "discrim") {
+    let messageArray = message.content.split(" ");
+    let args = messageArray.slice(1);
+    
+    if (message.author.bot) return;
+    
+    var discri = args[0]
+    let discrim
+    if(discri){
+    discrim = discri;
+    }else{
+    discrim = message.author.discriminator;
+    }
+    if(discrim.length == 1){
+        discrim = "000"+discrim
+    }
+    if(discrim.length == 2){
+        discrim = "00"+discrim
+    }
+    if(discrim.length == 3){
+        discrim = "0"+discrim
+    }
+
+        const users = client.users.filter(user => user.discriminator === discrim).map(user => user.username);
+        return message.channel.send(`
+            **Found ${users.length} users with the discriminator #${discrim}**
+            ${users.join('\n')}
+        `);
+
+/*if(command == "emoji-img"){
+        let emojis = msg.guild.emojis
+  msg.channel.send({ files: [emoji.url] });
+}*/
+}
+});
+client.on('message', message => {
+   if (message.content === "roll") {
+  message.channel.sendMessage(Math.floor(Math.random() * 100));
+    }
+});
+
+
+       client.on('message', message => {
+        var args = message.content.split(/[ ]+/)
+        if(message.content.includes('gmail')){
+           if(!message.channel.guild) return message.reply('** advertising me on DM ? :thinking:   **');
+        if (!message.member.hasPermissions('ADMINISTRATOR')){
+        message.delete()
+    return message.reply(`** Not allowed to advertising Here :angry: ! **`)
+    }
+        }
+    });
+    
+    client.on('message', message => {
+        var args = message.content.split(/[ ]+/)
+        if(message.content.includes('snapchat')){
+           if(!message.channel.guild) return message.reply('** advertising me on DM ? :thinking:   **');
+        if (!message.member.hasPermissions('ADMINISTRATOR')){
+        message.delete()
+    return message.reply(`** Not allowed to advertising Here :angry: ! **`)
+    }
+        }
+    });
+    
+    
+    client.on('message', message => {
+        var args = message.content.split(/[ ]+/)
+        if(message.content.includes('instagram')){
+            if(!message.channel.guild) return message.reply('** advertising me on DM ? :thinking:   **');
+        if (!message.member.hasPermissions('ADMINISTRATOR')){
+        message.delete()
+    return message.reply(`** Not allowed to advertising Here :angry: ! **`)
+    }
+        }
+    });
+    
+    
+    client.on('message', message => {
+        var args = message.content.split(/[ ]+/)
+        if(message.content.includes('twitter')){
+           if(!message.channel.guild) return message.reply('** advertising me on DM ? :thinking:   **');
+        if (!message.member.hasPermissions('ADMINISTRATOR')){
+        message.delete()
+    return message.reply(`** Not allowed to advertising Here :angry: ! **`)
+    }
+        }
+    });
+    
+    
+    client.on('message', message => {
+        var args = message.content.split(/[ ]+/)
+        if(message.content.includes('facebook')){
+            if(!message.channel.guild) return message.reply('** advertising me on DM ? :thinking:   **');
+        if (!message.member.hasPermissions('ADMINISTRATOR')){
+        message.delete()
+    return message.reply(`** Not allowed to advertising Here :angry: ! **`)
+    }
+        }
+    });
+    
+    
+    
+    client.on('message', message => {
+        var args = message.content.split(/[ ]+/)
+        if(message.content.includes('youtube')){
+          if(!message.channel.guild) return message.reply('** advertising me on DM ? :thinking:   **');
+        if (!message.member.hasPermissions('ADMINISTRATOR')){
+        message.delete()
+    return message.reply(`** Not allowed to advertising Here :angry: ! **`)
+    }
+        }
+    
+    });
+client.on('message', message => {
+    if(message.content.includes('discord.gg')){
+                                            if(!message.channel.guild) return message.reply('** advertising me on DM ? :thinking:   **');
+        if (!message.member.hasPermissions('ADMINISTRATOR')){
+        message.delete()
+    return message.reply(`** Not allowed to advertising Here :angry: ! **`)
+        }
+}
+});
+
+
+  var antispam = require("anti-spam");
+ 
+  antispam(client, {
+    warnBuffer: 3, //الحد الأقصى المسموح به من الرسائل لإرسالها في الفاصل الزمني قبل الحصول على تحذير.
+    maxBuffer: 10, // الحد الأقصى المسموح به من الرسائل لإرسالها في الفاصل الزمني قبل الحصول على ميوت.
+    interval: 1000, // مقدار الوقت قبل حصول باند
+    warningMessage: "```وقف سبام```", // رسالة تحذير اذا سوا سبام!
+    roleMessage: "🤐ما تبي توقف ابلع ميوت", // الرسالة الي تجي اذا شخص اخذ ميوت
+    roleName: "muted", // اسم رتبة الميوت
+    maxDuplicatesWarning: 4, // عدد الرسايل الي قبل التحذيرات
+    maxDuplicatesBan: 5, // عدد الرسايل الي يقدر المستخدم يرسلها قبل الميوت
+    time: 9999, // عدد الوقت الي يجلس لين تسحب رتبة الميوت من الشخص الحسبة برمجية وليست كتابية 
+  });
+
+
 
 
 
