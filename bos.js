@@ -1712,6 +1712,9 @@ var antispam = require("anti-spam");
   });
 
 
-
+client.on('guildMemberAdd', member => {
+  member.addRole(member.guild.roles.find("name", "Looks."))
+  .catch(console.error)
+});
 
 client.login(process.env.BOT_TOKEN);
