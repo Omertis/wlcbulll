@@ -1530,7 +1530,7 @@ client.on("ready", () => {
     })
 })
 client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.find('name', 'bbbbbbooooootttttt');
+    let channel = member.guild.channels.find('name', 'look§');
     if (!channel) {
         console.log("!channel fails");
         return;
