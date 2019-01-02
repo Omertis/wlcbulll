@@ -1502,7 +1502,7 @@ const w = ['./img/image0 (5).png'];
                                  ctx.closePath();
                                  ctx.clip();
                                  ctx.drawImage(ava, 35.3, 40, 120, 120);     
-client.channels.get("528660437298839562").sendFile(canvas.toBuffer())
+client.channels.get("528660437298weqwe839562").sendFile(canvas.toBuffer())
 
 
 
@@ -1521,7 +1521,7 @@ function forEachObject(obj, func) {
 client.on("ready", () => {
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "Looks.,")
+        guild = client.guilds.find("name", "Looksqwe.,")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -1530,7 +1530,7 @@ client.on("ready", () => {
     })
 })
 client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.find('name', 'look§');
+    let channel = member.guild.channels.find('name', 'looweqk§');
     if (!channel) {
         console.log("!channel fails");
         return;
@@ -1541,7 +1541,7 @@ client.on("guildMemberAdd", (member) => {
     console.log('made it till here!');
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "Looks.,")
+        guild = client.guilds.find("name", "Looqweks.,")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
